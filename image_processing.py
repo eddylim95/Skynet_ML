@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 import os
 
 folders = [ 
@@ -26,18 +25,20 @@ folders = [
 my_path = os.path.abspath(os.path.dirname(__file__))
 
 for name in folders:
-	i = 2
-	while (True):
-		try:
-			filename = os.path.join(my_path, (name + "\\" + name + "_" + str(i) + ".jpg"))
-			image = cv2.imread(filename, 0)
-			resized_image = cv2.resize(image, (150, 150)) 
-			filename = os.path.join(my_path, ("grey" + "\\" + name + "\\"))
-			if not os.path.exists(filename):
-				os.makedirs(filename)
-			filename = os.path.join(filename + name + "_" + str(i) + "_grey.jpg")
-			cv2.imwrite(filename, resized_image)
-			i += 1
-		except:
-			print(name + ' error')
-			break;
+    i = 2
+    while (True):
+        try:
+            image_path = os.path.join(my_path, (name + "\\" + name + "_" + str(i) + ".jpg"))
+            if (not os.path.isfile(image_path)):
+                break
+            image = cv2.imread(image_path, 0)
+            resized_image = cv2.resize(image, (150, 150)) 
+            image_path = os.path.join(my_path, ("grey" + "\\" + name + "\\"))
+            if not os.path.exists(image_path):
+                os.makedirs(image_path)
+            image_path = os.path.join(image_path + name + "_" + str(i) + ".jpg")
+            cv2.imwrite(image_path, resized_image)
+            i += 1
+        except:
+            print(name, i, 'error')
+            break;
