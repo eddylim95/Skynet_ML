@@ -26,8 +26,7 @@ for name in folders:
 	i = 1
 	while (True):
 		try:
-			filename = "\\" + name + "\\" + name + "_" + str(i) + ".jpg"
-			print(filename)
+			filename = "\\" + name + "\\" + name + "_" + str(i)
 			image = cv2.imread(filename, 0)
 			resized_image = cv2.resize(image, (150, 150)) 
 			cv2.imwrite(filename + "_Grey", resized_image)
