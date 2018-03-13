@@ -25,7 +25,7 @@ folders = [
 my_path = os.path.abspath(os.path.dirname(__file__))
 
 for name in folders:
-    i = 2
+    i = 1
     while (True):
         try:
             image_path = os.path.join(my_path, (name + "\\" + name + "_" + str(i) + ".jpg"))
