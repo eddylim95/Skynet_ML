@@ -41,4 +41,4 @@ for name in folders:
             i += 1
         except:
             print(name, i, 'error')
-            break;
+            continue
